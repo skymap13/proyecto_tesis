@@ -12,4 +12,4 @@ class UserController extends Controller
     public function getAccountEdit(){
         return view('user.account_edit');
     }
-}
+} 

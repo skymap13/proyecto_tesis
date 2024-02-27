@@ -67,6 +67,14 @@
                     	@if(is_null(Auth::user()->avatar)) <img src="{{ url('/static/imagenes/default-avatar.png')}}">@endif Hola: {{ Auth::user()->name }} {{ Auth::user()->lastname }} 
                     </a>
                         <ul class="dropdown-menu shadow">
+                        	@if(Auth::user()->role == "1")
+	                        	<li>
+	                        		<a class="dropdown-item" href="{{ url('/admin') }}">
+	                        			<i class="fa-solid fa-chalkboard-user"></i> Administrador
+	                        		</a>
+	                        	</li>
+	                        	<li> <hr class="dropdown-divider"></li>
+                        	@endif
                         	<li>
                         		<a class="dropdown-item" href="{{ url('/account/edit') }}">
                         			<i class="fa-solid fa-address-card"></i> Editar Informacion

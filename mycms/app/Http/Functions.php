@@ -96,3 +96,11 @@ function user_permissions(){
     return $p;
 }
 
+function getUserYears(){
+    $ya = date('Y');
+    $ym = $ya - 15;
+    $yo = $ym - 70;
+
+    return [$ym,$yo];
+    
+}

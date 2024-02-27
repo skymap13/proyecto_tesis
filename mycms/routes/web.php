@@ -13,7 +13,7 @@
 
 Route::get('/', 'ContentController@getHome');
 
-
+ 
 // Router auth
 
 Route::get('/login', 'ConnectController@getLogin')->name('login');
