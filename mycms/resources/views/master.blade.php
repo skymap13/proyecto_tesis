@@ -2,10 +2,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>@yield('title') - Vernelly</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>@yield('title') - {{Config::get('mycms.name')}}</title>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="routeName" content="{{ Route::currentRouteName() }}">
+	<meta name="currency" content="{{ Config::get('mycms.currency') }}">
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>  
@@ -13,20 +14,25 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400/700&disp1ay=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/57723ea876.js" crossorigin="anonymous"></script>
 
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
 
 	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
- 
+	
 	
 
-	<!--<script src="{{ url('/static/libs/ckeditor/ckeditor.js') }}"></script>-->
+	<script src="{{ url('/static/libs/ckeditor/ckeditor.js') }}"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>	
+	<script src="{{ url('/static/js/mdslider.js?v='.time()) }}"></script>
 	<script src="{{ url('/static/js/site.js?v='.time()) }}"></script>
+	
+
+
 </head>
 <body>
 
@@ -40,16 +46,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link"><i class="fa-solid fa-house-chimney"></i> Inicio</a>
+                    <a href="{{ url('/') }}" class="nav-link"><i class="fa-solid fa-house-chimney"></i> <span></span> Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link"><i class="fa-solid fa-shop"></i> Tienda</a>
+                    <a href="{{ url('/') }}" class="nav-link"><i class="fa-solid fa-shop"></i> <span></span> Tienda</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link"><i class="fa-solid fa-people-group"></i> Sobre nosotros</a>
+                    <a href="{{ url('/') }}" class="nav-link"><i class="fa-solid fa-people-group"></i> <span></span> Sobre nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link"><i class="fa-solid fa-phone-volume"></i> Contacto</a>
+                    <a href="{{ url('/') }}" class="nav-link"><i class="fa-solid fa-phone-volume"></i> <span></span> Contacto</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/car') }}" class="nav-link"><i class="fa-solid fa-cart-shopping"></i><span class="carnumber"> 0 </span></a>
@@ -62,9 +68,13 @@
                     <a href="{{ url('/register') }}" class="nav-link btn"><i class="fa-solid fa-circle-user"></i> Crear cuenta</a>
                 </li>
                 @else
-                <li class="nav-item link-acc link-user dropdown">
+                <li class="nav-item link-acc dropdown link-user ">
                     <a href="{{ url('/login') }}" class="nav-link btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    	@if(is_null(Auth::user()->avatar)) <img src="{{ url('/static/imagenes/default-avatar.png')}}">@endif Hola: {{ Auth::user()->name }} {{ Auth::user()->lastname }} 
+                    	@if(is_null(Auth::user()->avatar)) 
+                    	<img src="{{ url('/static/imagenes/default-avatar.png')}}">
+                    	@else
+                    	<img src="{{ url('/uploads_users/'.Auth::id().'/av_'.Auth::user()->avatar) }}">
+                    	@endif  Hola: {{ Auth::user()->name }} {{ Auth::user()->lastname }} 
                     </a>
                         <ul class="dropdown-menu shadow">
                         	@if(Auth::user()->role == "1")
@@ -124,6 +134,7 @@
 		</div>
 	</div>
 
+	
 
 	<script>
         document.addEventListener('DOMContentLoaded', function () {

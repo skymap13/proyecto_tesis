@@ -25,15 +25,19 @@ document.addEventListener('DOMContentLoaded', function(){
             document.getElementById('form_product_gallery').submit();
         });
     }
-    route_active = document.getElementsByClassName('lk-'+route)[0].classList.add('active');
+    if(route){
+        var route_active = document.getElementsByClassName('lk-'+route)[0];
+        if(route_active){
+            route_active.classList.add('active');
+        }
+    }
 
-    btn_deleted = document.getElementsByClassName('btn-deleted');
-    for(i=0; i < btn_deleted.length; i++){
+    var btn_deleted = document.getElementsByClassName('btn-deleted');
+    for(var i=0; i < btn_deleted.length; i++){
         btn_deleted[i].addEventListener('click', delete_object);
     }
-    
-
 });
+
 
 
 $(document).ready(function(){

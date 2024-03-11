@@ -90,6 +90,34 @@ function user_permissions(){
                 'user_banned' => 'Puede banear Usuarios.' ,
                 'user_permissions' => 'Puede administrar permisos de Usuarios.'            
             ]
+        ],
+
+        'sliders' => [
+            'icon' => '<i class="fa-regular fa-images"></i>', 
+            'title' => 'Modulo de Sliders',
+            'keys' => [
+                'sliders_list' => 'Puede ver la lista de sliders.',
+                'slider_add' => 'Puede crear Sliders',
+                'slider_edit' => 'Puede editar Sliders.' ,
+                'slider_delete' => 'Puede eliminar Sliders.'     
+                
+            ]
+        ],
+
+        'settings' => [
+            'icon' => '<i class="fa-solid fa-gears"></i>', 
+            'title' => 'Modulo de Configuraciones',
+            'keys' => [
+                'settings' => 'Puede modificar las Configuraciones.'      
+            ]
+        ],
+
+        'orders' => [
+            'icon' => '<i class="fa-solid fa-clipboard-list"></i>', 
+            'title' => 'Modulo de Ordenes',
+            'keys' => [
+                'order_list' => 'Puede ver el estado de las ordenes.'      
+            ]
         ]
     ];
 
@@ -101,6 +129,27 @@ function getUserYears(){
     $ym = $ya - 15;
     $yo = $ym - 70;
 
-    return [$ym,$yo];
-    
+    return [$ym,$yo];    
+}
+
+function getMonths($mode, $key){
+    $m = [
+        '01' => 'Enero',
+        '02' => 'Febrero',
+        '03' => 'Marzo',
+        '04' => 'Abril',
+        '05' => 'Mayo',
+        '06' => 'Junio',
+        '07' => 'Julio',
+        '08' => 'Agosto',
+        '09' => 'Septiempre',
+        '10' => 'Octubre',
+        '11' => 'Noviembre',
+        '12' => 'Diciembre',
+    ];
+    if($mode == 'list'){
+        return $m;
+    }else{
+        return $m[$key];
+    }
 }

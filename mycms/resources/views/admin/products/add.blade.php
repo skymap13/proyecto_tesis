@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
 <li class="breadcrumb-item">
-	<a href="{{ url('/admin/products') }}"><i class="fa-solid fa-boxes-stacked"></i> Productos</a>
+	<a href="{{ url('/admin/products/1') }}"><i class="fa-solid fa-boxes-stacked"></i> Productos</a>
 </li>
 <li class="breadcrumb-item">
 	<a href="{{ url('/admin/product/add') }}"><i class="fa-solid fa-plus"></i> Agregar producto</a>

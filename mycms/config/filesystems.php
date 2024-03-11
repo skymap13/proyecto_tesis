@@ -60,6 +60,11 @@ return [
             'root' => 'C:/proyecto_tesis/mycms/public/uploads'
         ],
 
+        'uploads_user' => [
+            'driver' => 'local',
+            'root' => 'C:/proyecto_tesis/mycms/public/uploads_users'
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

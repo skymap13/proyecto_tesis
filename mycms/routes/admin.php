@@ -2,6 +2,12 @@
 Route::prefix('/admin')->group(function(){
     Route::get('/', 'Admin\DashboardController@getDashboard')->name('dashboard');
 
+    //Module Settings
+    Route::get('/settings', 'Admin\SettingsController@getHome')->name('settings');
+    Route::post('/settings', 'Admin\SettingsController@postHome')->name('settings');
+
+
+ 
     //Module Users
     Route::get('/users/{status}', 'Admin\UserController@getUsers')->name('user_list');
     Route::get('/user/{id}/edit', 'Admin\UserController@getUsersEdit')->name('user_edit');
@@ -30,5 +36,12 @@ Route::prefix('/admin')->group(function(){
     Route::get('/category/{id}/edit', 'Admin\CategoriesController@getCategoryEdit')->name('category_edit');
     Route::post('/category/{id}/edit', 'Admin\CategoriesController@postCategoryEdit')->name('category_edit');
     Route::get('/category/{id}/delete', 'Admin\CategoriesController@getCategoryDelete')->name('category_delete');
+
+    //Slider
+    Route::get('/sliders', 'Admin\SliderController@getHome')->name('sliders_list');
+    Route::post('/slider/add', 'Admin\SliderController@postSliderAdd')->name('slider_add');
+    Route::get('/slider/{id}/edit', 'Admin\SliderController@getSliderEdit')->name('slider_edit');
+    Route::post('/slider/{id}/edit', 'Admin\SliderController@postSliderEdit')->name('slider_edit');
+    Route::get('/slider/{id}/delete', 'Admin\SliderController@getSliderDelete')->name('slider_delete');
 
 });
