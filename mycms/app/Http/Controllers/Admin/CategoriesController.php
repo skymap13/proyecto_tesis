@@ -11,7 +11,7 @@ use App\Http\Models\Category;
 
 class CategoriesController extends Controller
 {
-     public function __Construct(){
+     public function __construct(){
         $this->middleware('auth');
         $this->middleware('user.status');
         $this->middleware('user.permissions');

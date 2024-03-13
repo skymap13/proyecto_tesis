@@ -11,7 +11,7 @@ use Validator, Str, Config, Image;
 
 class ProductController extends Controller
 {
-    public function __Construct(){
+    public function __construct(){
         $this->middleware('auth');
         $this->middleware('user.status');
         $this->middleware('user.permissions');
@@ -197,7 +197,7 @@ class ProductController extends Controller
                     if($request->hasFile('file_image')):
                         $fl = $request->file_image->storeAs($path, $filename, 'uploads');
                         $img = Image::make($file_file);
-                        $img->fit(256, 256, function($constraint){
+                        $img->fit(512, 512, function($constraint){
                             $constraint->upsize();
                         });
                         $img->save($upload_path.'/'.$path.'/t_'.$filename);

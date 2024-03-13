@@ -4,11 +4,12 @@
 
 @section('breadcrumb')
 <li class="breadcrumb-item">
-	<a href="{{ url('/admin/users') }}"><i class="fa-solid fa-user-group"></i> Usuarios</a>
+	<a href="{{ url('/admin/users/all') }}"><i class="fa-solid fa-user-group"></i> Usuarios</a>
 </li>
 <li class="breadcrumb-item">
-	<a href="{{ url('/admin/users') }}"><i class="fa-solid fa-user-gear"></i> Permisos de Usuarios: {{ $u->name }} {{ $u->lastname }} (ID: {{$u->id}} )</a>
+    <a href="{{ url('/admin/user/'.$u->id.'/permissions') }}"><i class="fa-solid fa-user-gear"></i> Permisos de Usuarios: {{ $u->name }} {{ $u->lastname }} (ID: {{$u->id}} )</a>
 </li>
+
 @endsection
 
 @section('content')

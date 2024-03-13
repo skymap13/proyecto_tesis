@@ -26,6 +26,11 @@ Route::get('/register', 'ConnectController@getRegister')->name('register');
 Route::post('/register', 'ConnectController@postRegister')->name('register');
 Route::get('/logout', 'ConnectController@getLogout')->name('logout');
 
+//Module Products
+Route::get('/product/{id}/{slug}', 'ProductController@getProduct');
+
+
+
 // Module user actions
 
 Route::get('/account/edit', 'UserController@getAccountEdit')->name('account_edit');
@@ -36,3 +41,5 @@ Route::post('/account/edit/info', 'UserController@postAccountInfo')->name('accou
 
 // Ajax Api Routers
 Route::get('/md/api/load/products/{section}', 'ApiJsController@getProductsSection');
+Route::post('/md/api/load/user/favorites', 'ApiJsController@postUserFavorites');
+Route::post('/md/api/favorites/add/{object}/{module}', 'ApiJsController@postFavoriteAdd');

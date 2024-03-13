@@ -7,9 +7,13 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="routeName" content="{{ Route::currentRouteName() }}">
 	<meta name="currency" content="{{ Config::get('mycms.currency') }}">
+	<meta name="auth" content="{{Auth::check()}}">
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>  
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
 	<link rel="stylesheet" href="{{ url('/static/css/style.css?v='.time()) }}">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400/700&disp1ay=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/57723ea876.js" crossorigin="anonymous"></script>
@@ -27,9 +31,12 @@
 
 	<script src="{{ url('/static/libs/ckeditor/ckeditor.js') }}"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<script src="{{ url('/static/js/mdslider.js?v='.time()) }}"></script>
 	<script src="{{ url('/static/js/site.js?v='.time()) }}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 	
 
 
@@ -76,6 +83,7 @@
                     	<img src="{{ url('/uploads_users/'.Auth::id().'/av_'.Auth::user()->avatar) }}">
                     	@endif  Hola: {{ Auth::user()->name }} {{ Auth::user()->lastname }} 
                     </a>
+                        
                         <ul class="dropdown-menu shadow">
                         	@if(Auth::user()->role == "1")
 	                        	<li>
@@ -85,11 +93,19 @@
 	                        	</li>
 	                        	<li> <hr class="dropdown-divider"></li>
                         	@endif
+                        	
+                        	<li>
+                        		<a class="dropdown-item" href="{{ url('/account/favorites') }}">
+                        			<i class="fa-solid fa-heart"></i> Favoritos
+                        		</a>
+                        	</li>
+
                         	<li>
                         		<a class="dropdown-item" href="{{ url('/account/edit') }}">
                         			<i class="fa-solid fa-address-card"></i> Editar Informacion
                         		</a>
                         	</li>
+                        	
                         	<li>
                         		<a class="dropdown-item" href="{{ url('/logout') }}">
                         			<i class="fa-solid fa-right-from-bracket"></i> Salir

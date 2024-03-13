@@ -9,7 +9,7 @@ use App\User;
 
 class ConnectController extends Controller
 {
-    public function __Construct(){
+    public function __construct(){
         $this->middleware('guest')->except(['getLogout']);
     }
 

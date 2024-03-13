@@ -81,9 +81,20 @@
 						<span class="input-group-text" id="basic-addon1">
 							<i class="fa-regular fa-keyboard"></i>
 						</span>
-						{!! Form::text('products_per_page', Config::get('mycms.products_per_page'), ['class' => 'form-control']) !!}
+						{!! Form::number('products_per_page', Config::get('mycms.products_per_page'), ['class' => 'form-control']) !!}
 					</div>
 				</div>
+
+				<div class="col-md-4 ">
+					<label for="products_per_page_random">Productos para mostrar por pagina (Random): </label>
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="basic-addon1">
+							<i class="fa-regular fa-keyboard"></i>
+						</span>
+						{!! Form::number('products_per_page_random', Config::get('mycms.products_per_page_random'), ['class' => 'form-control']) !!}
+					</div>
+				</div>
+
 			</div>
 
 
